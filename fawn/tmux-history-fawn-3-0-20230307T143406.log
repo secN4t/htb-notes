@@ -1,0 +1,64 @@
+                                                                                
+┌──(n4t㉿n4t)-[~/htb-notes/fawn]
+└─$ ftp -h                   
+usage: ftp [-46AadefginpRtVv] [-N NETRC] [-o OUTPUT] [-P PORT] [-q QUITTIME]
+           [-r RETRY] [-s SRCADDR] [-T DIR,MAX[,INC]] [-x XFERSIZE]
+           [[USER@]HOST [PORT]]
+           [[USER@]HOST:[PATH][/]]
+           [file:///PATH]
+           [ftp://[USER[:PASSWORD]@]HOST[:PORT]/PATH[/][;type=TYPE]]
+           [http://[USER[:PASSWORD]@]HOST[:PORT]/PATH]
+           [https://[USER[:PASSWORD]@]HOST[:PORT]/PATH]
+           ...
+       ftp -u URL FILE ...
+       ftp -?
+                                                                                
+┌──(n4t㉿n4t)-[~/htb-notes/fawn]
+└─$ ftp anonymous@10.129.219.20
+Connected to 10.129.219.20.
+220 (vsFTPd 3.0.3)
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+229 Entering Extended Passive Mode (|||26834|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+ftp> cd ..
+250 Directory successfully changed.
+ftp> ls
+229 Entering Extended Passive Mode (|||13191|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+ftp> cd ..
+250 Directory successfully changed.
+ftp> ls
+229 Entering Extended Passive Mode (|||5552|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+ftp> ls -a
+229 Entering Extended Passive Mode (|||16215|)
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        121          4096 Jun 04  2021 .
+drwxr-xr-x    2 0        121          4096 Jun 04  2021 ..
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+
+ftp> get flag.txt
+local: flag.txt remote: flag.txt
+229 Entering Extended Passive Mode (|||41795|)
+150 Opening BINARY mode data connection for flag.txt (32 bytes).
+100% |***********************************|    32      107.75 KiB/s    00:00 ETA
+226 Transfer complete.
+32 bytes received in 00:00 (2.52 KiB/s)
+ftp> exit
+221 Goodbye.
+                                                                                
+┌──(n4t㉿n4t)-[~/htb-notes/fawn]
+└─$ cat flag.txt                            
+035db21c881520061c53e0536e44f815                                                                                
