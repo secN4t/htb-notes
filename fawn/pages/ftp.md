@@ -1,6 +1,7 @@
 - ftp port is  21
 - [[Default Password]] [[Default Credentials]]
 - anonymous is the default username and can be the default password
--
+- |user credential|
+- |admin administrator root|
 - [[command]]
 	- ftp username@ipaddress
